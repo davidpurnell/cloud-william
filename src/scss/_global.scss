@@ -10,9 +10,9 @@ body {
   align-items: center;
   background: linear-gradient($paleish-blue, $black);
   color: $almostwhite;
-  @include light-font;
+  @include regular-font;
   // font grows 1px for every 100px of viewport width
-  font-size: calc(12px + 0.5vw);
+  font-size: calc(14px + 0.5vw);
   // leading grows along with font,
   // with an additional 0.1em + 0.5px per 100px of the viewport
   line-height: calc(1.1em + 0.5vw);
@@ -27,7 +27,7 @@ body {
   justify-content: center;
 
   .poem {
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     text-align: left;
     width: 100%;
     display: flex;
@@ -56,7 +56,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 5px;
-  @media (max-height: 666px) {
+  @media (max-height: 667px) {
     position: relative;
   }
 
@@ -65,7 +65,6 @@ footer {
   align-items: flex-start;
 
   a {
-    @include regular-font;
     color: $gray-600;
     text-decoration: none;
     &:hover,
