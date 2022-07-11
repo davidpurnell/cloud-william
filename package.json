@@ -4,7 +4,7 @@
   "description": "just some fun",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidpurnell/aatom-webpack.git"
+    "url": "git+https://github.com/davidpurnell/cloud-william.git"
   },
   "main": "clouds.js",
   "scripts": {
