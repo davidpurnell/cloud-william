@@ -1,0 +1,137 @@
+html,
+body {
+  min-height: 100vh;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($paleish-blue, $black);
+  color: $almostwhite;
+  @include light-font;
+  // font grows 1px for every 100px of viewport width
+  font-size: calc(12px + 0.5vw);
+  // leading grows along with font,
+  // with an additional 0.1em + 0.5px per 100px of the viewport
+  line-height: calc(1.1em + 0.5vw);
+  text-align: center;
+  -webkit-tap-highlight-color: $transparent;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  .poem {
+    padding-bottom: 1em;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  #first {
+    display: none;
+    flex-direction: column;
+  }
+  #first.shown {
+    cursor: pointer;
+    display: flex;
+  }
+  #all {
+    display: none;
+    flex-direction: column;
+  }
+  #all.shown {
+    cursor: pointer;
+    display: flex;
+  }
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  @media (max-height: 666px) {
+    position: relative;
+  }
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  a {
+    @include regular-font;
+    color: $gray-600;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      color: $paleish-blue;
+    }
+  }
+  .credits {
+    font-size: 90%;
+    ul {
+      list-style: none;
+      padding-inline-start: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      @media (min-width: 576px) {
+        flex-direction: row;
+        li:not(:last-child):after {
+          content: " | ";
+          white-space: pre;
+        }
+      }
+    }
+  }
+}
+
+$clouds: ("../img/clouds_2.png" 1000px 20s), ("../img/clouds_1.png" 1000px 15s),
+  ("../img/clouds_3.png" 1579px 17s);
+
+@for $i from 1 through length($clouds) {
+  $item: nth($clouds, $i);
+  $path: nth($item, 1);
+  $width: nth($item, 2);
+  $duration: nth($item, 3);
+
+  @keyframes clouds-loop-#{$i} {
+    to {
+      background-position: -$width 0;
+    }
+  }
+
+  .clouds-#{$i} {
+    background-image: url($path);
+    animation: clouds-loop-#{$i} $duration infinite linear;
+  }
+}
+
+.clouds {
+  opacity: 0.4;
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+
+.clouds-1,
+.clouds-2,
+.clouds-3 {
+  background-repeat: repeat-x;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 500px;
+}
