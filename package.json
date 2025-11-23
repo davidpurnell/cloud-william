@@ -9,7 +9,8 @@
   "main": "clouds.js",
   "scripts": {
     "build": "webpack --mode production",
-    "serve": "webpack serve --mode development"
+    "serve": "webpack serve --mode development",
+    "start": "node server.js"
   },
   "browserslist": [
     "> 1%",
@@ -30,6 +31,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
+    "express": "^5.1.0",
     "favicons-webpack-plugin": "^6.0.1",
     "html-webpack-plugin": "^5.6.5",
     "imagemin": "^8.0.1",
