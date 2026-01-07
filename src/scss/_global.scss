@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "mixins";
+@use "variables";
+
 html {
 	height: 100%;
 }
@@ -9,18 +13,18 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient($paleish-blue, $black);
+	background: linear-gradient(variables.$paleish-blue, variables.$black);
 	background-repeat: no-repeat;
-	background-color: $black;
-	color: $almostwhite;
-	@include regular-font;
+	background-color: variables.$black;
+	color: variables.$almostwhite;
+	@include mixins.regular-font;
 	// font grows 1px for every 100px of viewport width
 	font-size: calc(14px + 0.5vw);
 	// leading grows along with font,
 	// with an additional 0.1em + 0.5px per 100px of the viewport
 	line-height: calc(1.1em + 0.5vw);
 	text-align: center;
-	-webkit-tap-highlight-color: $transparent;
+	-webkit-tap-highlight-color: variables.$transparent;
 }
 
 .main {
@@ -60,11 +64,11 @@ footer {
 	display: none;
 
 	a {
-		color: $gray-600;
+		color: variables.$gray-600;
 		text-decoration: none;
 		&:hover,
 		&:focus {
-			color: $paleish-blue;
+			color: variables.$paleish-blue;
 		}
 	}
 	.credits {
@@ -102,11 +106,11 @@ footer {
 $clouds: ("../img/clouds_2.png" 1000px 20s), ("../img/clouds_1.png" 1000px 15s),
 	("../img/clouds_3.png" 1579px 17s);
 
-@for $i from 1 through length($clouds) {
-	$item: nth($clouds, $i);
-	$path: nth($item, 1);
-	$width: nth($item, 2);
-	$duration: nth($item, 3);
+@for $i from 1 through list.length($clouds) {
+	$item: list.nth($clouds, $i);
+	$path: list.nth($item, 1);
+	$width: list.nth($item, 2);
+	$duration: list.nth($item, 3);
 
 	@keyframes clouds-loop-#{$i} {
 		to {
